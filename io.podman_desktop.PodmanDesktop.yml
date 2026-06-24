@@ -44,6 +44,8 @@ modules:
         electron_config_cache: /run/build/podman-desktop/electron-cache
         ELECTRON_CACHE: /run/build/podman-desktop/electron-cache
     build-commands:
+      - tar -xvf pnpm-linux-*.tar.gz
+      - rm pnpm-linux-*.tar.gz
       - chmod 755 pnpm
       - mkdir bin && mv pnpm bin/
       # Display tooling version
