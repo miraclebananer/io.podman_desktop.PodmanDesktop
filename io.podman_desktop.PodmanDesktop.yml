@@ -44,8 +44,8 @@ modules:
         electron_config_cache: /run/build/podman-desktop/electron-cache
         ELECTRON_CACHE: /run/build/podman-desktop/electron-cache
     build-commands:
-      - tar -xvf pnpm-linux-*.tar.gz
-      - rm pnpm-linux-*.tar.gz
+      - tar -xvf pnpm.tar.gz
+      - rm pnpm.tar.gz
       - chmod 755 pnpm
       - mkdir bin && mv pnpm bin/
       # Display tooling version
@@ -76,13 +76,13 @@ modules:
       # pnpm tool used to build the project
       - type: file
         url: https://github.com/pnpm/pnpm/releases/download/v11.9.0/pnpm-linux-x64.tar.gz
-        dest-filename: pnpm
+        dest-filename: pnpm.tar.gz
         sha256: 8d987d82585453bcf260ea5d0bae346d298f1a5e71bcde8d99976521408ad895
         only-arches:
           - x86_64
       - type: file
         url: https://github.com/pnpm/pnpm/releases/download/v11.9.0/pnpm-linux-arm64.tar.gz
-        dest-filename: pnpm
+        dest-filename: pnpm.tar.gz
         sha256: 7981d0109fffdf8f15b838243240c8c9f9114dd4b7111d4227c1453522d75b61
         only-arches:
           - aarch64
