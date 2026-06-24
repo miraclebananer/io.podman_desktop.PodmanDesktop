@@ -73,7 +73,7 @@ modules:
     sources:
       # pnpm tool used to build the project
       - type: file
-        url: https://github.com/pnpm/pnpm/releases/download/v11.29.0/pnpm-linux-x64.tar.gz
+        url: https://github.com/pnpm/pnpm/releases/download/v11.9.0/pnpm-linux-x64.tar.gz
         dest-filename: pnpm
         sha256: 8d987d82585453bcf260ea5d0bae346d298f1a5e71bcde8d99976521408ad895
         only-arches:
