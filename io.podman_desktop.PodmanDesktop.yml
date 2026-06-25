@@ -54,7 +54,7 @@ modules:
       - echo home is $HOME
       - pnpm install --loglevel debug --offline --frozen-lockfile --store-dir ./pnpm-store
       # Manually set up electron binary - postinstall can't download in the sandbox
-      - ELECTRON_ARCH=$(case "$FLATPAK_ARCH" in "x86_64") echo "x64";; "aarch64") echo "arm64";; esac) && unzip -o electron-cache/92de7e0b9013f8f82044966bbe9739d493dc12c36e2bfa6dec36b69c73b451e6/electron-v41.2.1-linux-${ELECTRON_ARCH}.zip -d node_modules/electron/dist && echo "dist/electron" > node_modules/electron/path.txt && chmod +x node_modules/electron/dist/electron
+      - ELECTRON_ARCH=$(case "$FLATPAK_ARCH" in "x86_64") echo "x64";; "aarch64") echo "arm64";; esac) && unzip -o electron-cache/92de7e0b9013f8f82044966bbe9739d493dc12c36e2bfa6dec36b69c73b451e6/electron-v42.5.0-linux-${ELECTRON_ARCH}.zip -d node_modules/electron/dist && echo "dist/electron" > node_modules/electron/path.txt && chmod +x node_modules/electron/dist/electron
       # Replace segment key
       - sed -i -r -e "s/SEGMENT_KEY = '.*'/SEGMENT_KEY = '$(echo -n 'ODdEZUpwVFhmU05pemF5MUNxQXhsSzViYUQ4VUE1NUQ=' | base64 --decode)'/" packages/main/src/plugin/telemetry/telemetry.ts
       - . ./electron-builder-env.sh; pnpm run build
@@ -67,7 +67,7 @@ modules:
       - install -Dm644 ".flatpak-appdata.xml" "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       # add desktop file
       - install -Dm644 .flatpak.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - sed -i -e 's$https://raw.githubusercontent.com/containers/podman-desktop/media/screenshot.png$https://github.com/podman-desktop/podman-desktop/raw/refs/tags/v1.19.1/website/static/img/features/homepage.webp$g' /app/share/applications/${FLATPAK_ID}.desktop
+      - sed -i -e 's$https://raw.githubusercontent.com/containers/podman-desktop/media/screenshot.png$https://github.com/podman-desktop/podman-desktop/raw/refs/tags/v1.28.2/website/static/img/features/homepage.webp$g' /app/share/applications/${FLATPAK_ID}.desktop
       # Install run script
       - install -Dm755 -t /app/bin/ run.sh
     sources:
@@ -125,5 +125,6 @@ modules:
         dest-filename: electron-builder-env.sh
         commands:
           - export MODE=production
-          - export ELECTRON_CACHE="$(pwd)/electron-cache/92de7e0b9013f8f82044966bbe9739d493dc12c36e2bfa6dec36b69c73b451e6"
+          - export ELECTRON_CACHE="$(pwd)/electron-cache/92de7e0b9013f8f82044966bbe9739
+      - chmod 755 pnpmd493dc12c36e2bfa6dec36b69c73b451e6"
           - export ELECTRON_BUILDER_ARCH_ARGS=$(case "$FLATPAK_ARCH" in "i386") echo "--ia32" ;; "x86_64") echo "--x64" ;; "arm") echo "--armv7l" ;; "aarch64") echo "--arm64" ;; esac)
